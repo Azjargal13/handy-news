@@ -9,7 +9,8 @@
           height="60"
           outlined
           class="search"
-          full-width="true"
+          append-icon="$search"
+          hint="You can select multiple options :)"
         >
         </v-text-field>
       </div>
@@ -36,9 +37,9 @@ export default class SearchComp extends Vue {
 <style scoped>
 .search-outer {
   position: relative;
-  left: 350px;
   top: 200px;
   color: dimgrey;
   width: 450px;
+  margin: 0 auto;
 }
 </style>
