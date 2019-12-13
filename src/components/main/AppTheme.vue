@@ -29,13 +29,15 @@
         </v-list>
       </v-menu>
     </v-app-bar>
+    <SearchComp />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import SearchComp from "./SearchComp.vue";
 @Component({
-  components: {}
+  components: { SearchComp }
 })
 export default class AppTheme extends Vue {
   constructor() {
