@@ -42,7 +42,8 @@
 </template>
 
 <script lang="ts">
-export default {
-  name: "NewsSourceComponent"
-};
+import { Component, Vue } from "vue-property-decorator";
+
+@Component({})
+export default class NewsSourceComponentVue extends Vue {}
 </script>
