@@ -26,11 +26,16 @@
         <!-- After selecting choices-->
         <div v-show="!initShowSrc">
           <h2>Matching news sources from search input:</h2>
-          <v-chip v-for="src in filteredSrc" :key="src.id" class="selectedSrc">
+          <v-chip
+            v-for="src in filteredSrc"
+            :key="src.id"
+            class="selectedSrc"
+            @click="selectedSrc(src)"
+          >
             {{ src }}
           </v-chip>
         </div>
-        <h3>You are searching: {{ searchText }}</h3>
+        <h3 v-show="showSelected">You are selected: {{ searchText }}</h3>
       </div>
     </div>
   </div>
@@ -47,6 +52,7 @@ export default class SearchComp extends Vue {
   private searchText: string = "";
   private filteredSrc: Array<string> = [];
   private initShowSrc: boolean = true;
+  private showSelected: boolean = false;
   private newsSrc: Array<string> = [
     "ikon",
     "gogo.mn",
@@ -59,7 +65,9 @@ export default class SearchComp extends Vue {
     "NHK",
     "JapanPost",
     "Times",
-    "AsahiShinbun"
+    "AsahiShinbun",
+    "FoxNews",
+    "The Guardian"
   ];
   constructor() {
     super();
@@ -82,6 +90,12 @@ export default class SearchComp extends Vue {
       });
       return this.filteredSrc;
     }
+  }
+  private selectedSrc(srcValue: any) {
+    this.showSelected = true;
+    var selectedSrc: Array<string> = [];
+    selectedSrc.push(srcValue);
+    // show selected value in there!!
   }
   mounted() {}
 }
