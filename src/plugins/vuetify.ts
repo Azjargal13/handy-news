@@ -7,7 +7,8 @@ export default new Vuetify({
   icons: {
     iconfont: "mdi",
     values: {
-      search: "mdi-magnify"
+      search: "mdi-magnify",
+      heart:"mdi-heart"
     }
   }
 });

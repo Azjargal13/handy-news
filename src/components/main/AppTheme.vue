@@ -30,6 +30,20 @@
       </v-menu>
     </v-app-bar>
     <SearchComp />
+    <!-- footer section -->
+    <v-footer
+      absolute
+      class="font-weight-medium"
+    >
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+      made with full of  <v-icon>$heart</v-icon>
+        in {{ new Date().getFullYear() }} — <strong>HandyNews</strong>
+      </v-col>
+    </v-footer>
+
   </div>
 </template>
 
