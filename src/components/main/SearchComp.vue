@@ -35,7 +35,11 @@
             {{ src }}
           </v-chip>
         </div>
-        <h3 v-show="showSelected">You are selected: {{ searchText }}</h3>
+        <div v-show="showSelected"> 
+          <h3 >Your selected news sources are </h3>
+          <h4 v-for="src in selectedNewsSrc" :key="src.id" class="selectedNewsSrc"> {{src}} </h4>
+        </div>
+       
       </div>
     </div>
   </div>
@@ -53,6 +57,7 @@ export default class SearchComp extends Vue {
   private filteredSrc: Array<string> = [];
   private initShowSrc: boolean = true;
   private showSelected: boolean = false;
+  private selectedNewsSrc:Array<string> = [] 
   private newsSrc: Array<string> = [
     "ikon",
     "gogo.mn",
@@ -80,9 +85,11 @@ export default class SearchComp extends Vue {
   // that is dropdown menu
 
   // if selected something which is not in arr, then says no sources is available now
+
   private filterInputSearch() {
     if (this.searchText.length < 1) {
       this.initShowSrc = true;
+      //this.showSelected = false;
     } else {
       this.initShowSrc = false;
       this.filteredSrc = this.newsSrc.filter(newsSite => {
@@ -91,11 +98,13 @@ export default class SearchComp extends Vue {
       return this.filteredSrc;
     }
   }
-  private selectedSrc(srcValue: any) {
+  private selectedSrc(src: any) {
     this.showSelected = true;
-    var selectedSrc: Array<string> = [];
-    selectedSrc.push(srcValue);
-    // show selected value in there!!
+    // src should be existed only once
+    if (!this.selectedNewsSrc.includes(src)) {
+      this.selectedNewsSrc.push(src)
+    }
+    // when its again selecting, arr must be start from []
   }
   mounted() {}
 }
@@ -111,5 +120,9 @@ export default class SearchComp extends Vue {
 }
 .selectedSrc {
   margin: 5px 10px 5px auto;
+}
+.selectedNewsSrc{
+  color: gray;
+  margin: 5px auto
 }
 </style>
