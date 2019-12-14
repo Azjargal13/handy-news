@@ -8,7 +8,7 @@ export default new Vuetify({
     iconfont: "mdi",
     values: {
       search: "mdi-magnify",
-      heart:"mdi-heart"
+      heart: "mdi-heart"
     }
   }
 });

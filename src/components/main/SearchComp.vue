@@ -35,29 +35,36 @@
             {{ src }}
           </v-chip>
         </div>
-        <div v-show="showSelected"> 
-          <h3 >Your selected news sources are </h3>
-          <h4 v-for="src in selectedNewsSrc" :key="src.id" class="selectedNewsSrc"> {{src}} </h4>
+        <div v-show="showSelected">
+          <h3>Your selected news sources are</h3>
+          <h4
+            v-for="src in selectedNewsSrc"
+            :key="src.id"
+            class="selectedNewsSrc"
+          >
+            {{ src }}
+          </h4>
         </div>
-       
       </div>
     </div>
+    <CategoryComp />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import CategoryComp from "./CategoryComp.vue";
 
 @Component({
-  components: {}
+  components: { CategoryComp }
 })
 export default class SearchComp extends Vue {
   private searchText: string = "";
   private filteredSrc: Array<string> = [];
   private initShowSrc: boolean = true;
   private showSelected: boolean = false;
-  private selectedNewsSrc:Array<string> = [] 
+  private selectedNewsSrc: Array<string> = [];
   private newsSrc: Array<string> = [
     "ikon",
     "gogo.mn",
@@ -102,7 +109,7 @@ export default class SearchComp extends Vue {
     this.showSelected = true;
     // src should be existed only once
     if (!this.selectedNewsSrc.includes(src)) {
-      this.selectedNewsSrc.push(src)
+      this.selectedNewsSrc.push(src);
     }
     // when its again selecting, arr must be start from []
   }
@@ -121,8 +128,8 @@ export default class SearchComp extends Vue {
 .selectedSrc {
   margin: 5px 10px 5px auto;
 }
-.selectedNewsSrc{
+.selectedNewsSrc {
   color: gray;
-  margin: 5px auto
+  margin: 5px auto;
 }
 </style>
