@@ -1,12 +1,15 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <!--  -->
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import Vue from "vue";
+import Component from "vue-class-component";
 import AppTheme from "./components/main/AppTheme.vue";
+
 @Component({
   components: {
     AppTheme
