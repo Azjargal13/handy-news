@@ -4,7 +4,7 @@
       <div class="search-text">
         <v-text-field
           placeholder="Search anything..."
-          rounded="true"
+          rounded=true
           id="search"
           height="60"
           outlined
@@ -45,19 +45,19 @@
             {{ src }}
           </h4>
         </div>
+       <CategoryComp/>
       </div>
     </div>
-    <CategoryComp />
+    
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
-import CategoryComp from "./CategoryComp.vue";
+import {Vue, Component} from "vue-property-decorator"
+//import CategoryComp from "./CategoryComp.vue";
 
 @Component({
-  components: { CategoryComp }
+  //components: { CategoryComp }
 })
 export default class SearchComp extends Vue {
   private searchText: string = "";

@@ -1,9 +1,10 @@
 <template>
   <div>
-    <!-- <v-select
-          :items="items"
-          label="Standard"
-        ></v-select> -->
+    <v-select
+        :items="items"
+        label="Standard"
+        ></v-select>
+        
   </div>
 </template>
 

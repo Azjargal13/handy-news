@@ -31,6 +31,7 @@
     </v-app-bar>
     <!-- search component including category selection -->
     <SearchComp />
+    <CategoryComp/>
     <!-- footer section -->
     <v-footer absolute class="font-weight-medium">
       <v-col class="text-center" cols="12">
@@ -44,8 +45,9 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import SearchComp from "./SearchComp.vue";
+import CategoryComp from "./CategoryComp.vue"
 @Component({
-  components: { SearchComp }
+  components: { SearchComp, CategoryComp }
 })
 export default class AppTheme extends Vue {
   constructor() {
