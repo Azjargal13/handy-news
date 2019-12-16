@@ -4,9 +4,12 @@
       :items="items"
       label="News category"
       color="black"
-      hint="You can selelt multiple categories :)"
       multiple="true"
     ></v-select>
+    <v-btn>
+      <v-icon>$news</v-icon>
+      Show my news
+    </v-btn>
   </div>
 </template>
 
