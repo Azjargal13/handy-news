@@ -1,18 +1,23 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <!--  -->
+    <v-app>
+      <ToolbarComp />
+      <router-view></router-view>
+      <!-- <FooterComp /> -->
+    </v-app>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-import AppTheme from "./components/main/AppTheme.vue";
+import ToolbarComp from "./components/main/ToolbarComp.vue";
+import FooterComp from "./components/main/FooterComp.vue";
 
 @Component({
   components: {
-    AppTheme
+    ToolbarComp,
+    FooterComp
   }
 })
 export default class App extends Vue {}

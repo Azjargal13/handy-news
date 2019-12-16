@@ -1,20 +1,5 @@
 import Vue from "vue";
-import Vuetify, {
-  VSelect,
-  VFooter,
-  VMenu,
-  VBtn,
-  VAppBar,
-  VChip,
-  VList,
-  VListItemTitle,
-  VIcon,
-  VAppBarNavIcon,
-  VCol,
-  VContainer,
-  VRow,
-  VTextField
-} from "vuetify/lib";
+import Vuetify from "vuetify/lib";
 Vue.use(Vuetify);
 
 export default new Vuetify({
@@ -23,24 +8,9 @@ export default new Vuetify({
     values: {
       search: "mdi-magnify",
       heart: "mdi-heart",
-      news: "mdi-newspaper"
+      news: "mdi-newspaper",
+      event: "mdi-calendar"
     }
-  },
-  components: {
-    VSelect,
-    VFooter,
-    VMenu,
-    VBtn,
-    VAppBar,
-    VChip,
-    VList,
-    VListItemTitle,
-    VAppBarNavIcon,
-    VIcon,
-    VCol,
-    VContainer,
-    VRow,
-    VTextField
   },
   theme: {
     themes: {

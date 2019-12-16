@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-footer absolute class="font-weight-medium " color="secondary">
+    <v-footer absolute class="font-weight-medium footer " color="secondary">
       <v-col class="text-center" cols="12">
         made with full of <v-icon>$heart</v-icon> in
         {{ new Date().getFullYear() }} — <strong>HandyNews</strong>
@@ -23,4 +23,11 @@ export default class FooterComp extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px; /* Height of the footer */
+}
+</style>

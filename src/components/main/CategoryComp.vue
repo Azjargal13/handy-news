@@ -1,22 +1,34 @@
 <template>
   <div>
+    <!-- news category selection -->
     <v-select
       :items="items"
       label="News category"
       color="black"
       multiple="true"
+      class="categorySel"
     ></v-select>
-    <v-btn>
+    <!-- date picker -->
+    <DatePickerComp />
+    <!-- news fetching confirmation button -->
+    <v-btn class="primary newsBtn" to="/news" block>
       <v-icon>$news</v-icon>
       Show my news
     </v-btn>
+    <!-- when pressing show news, progress bar should be visible -->
+    <!-- date picker by default its today -->
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-@Component({})
+import DatePickerComp from "./DatePickerComp.vue";
+@Component({
+  components: {
+    DatePickerComp
+  }
+})
 export default class CategoryComp extends Vue {
   // news caterogy includes
   // - business, market, world, politics, technology, breakingviews, sport, life
@@ -30,9 +42,18 @@ export default class CategoryComp extends Vue {
     "technology",
     "breaking views",
     "sport",
-    "life"
+    "life",
+    "entertainment",
+    "health",
+    "science"
   ];
 }
 </script>
 
-<style scoped></style>>
+<style scoped>
+.newsBtn {
+  padding: 15px;
+}
+.categorySel {
+}</style
+>>

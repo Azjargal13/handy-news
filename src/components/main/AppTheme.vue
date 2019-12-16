@@ -1,23 +1,9 @@
 <template>
   <div>
-    <v-app>
-      <v-app-bar color="secondary" dark>
-        <v-toolbar-title>Page title</v-toolbar-title>
-        <v-spacer></v-spacer>
-
-        <v-btn icon>
-          <v-icon>$heart</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>$search</v-icon>
-        </v-btn>
-      </v-app-bar>
-      <!-- search/input section -->
-      <SearchComp />
-      <!-- keep footer -->
-      <FooterComp />
-    </v-app>
+    <!-- search/input section -->
+    <SearchComp />
+    <!-- keep footer -->
+    <!-- <FooterComp /> -->
   </div>
 </template>
 
@@ -32,9 +18,6 @@ import FooterComp from "./FooterComp.vue";
 export default class AppTheme extends Vue {
   constructor() {
     super();
-  }
-  private onScroll(e: any) {
-    e.target.scrollTop;
   }
   mounted() {}
 }

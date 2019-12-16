@@ -5,10 +5,12 @@
         v-scroll:#scroll-target="onScroll"
         align="center"
         justify="center"
-        style="height: 1000px"
+        class="containerScroll"
       >
         <div class="search-outer">
           <div class="search-text">
+            <!-- due to scrolling search box is moving up & up -->
+            <!-- need to keep its position fixed -->
             <v-text-field
               placeholder="Search anything..."
               rounded="true"
@@ -33,6 +35,7 @@
             <!-- After selecting choices-->
             <div v-show="!initShowSrc">
               <h2>Matching news sources from search input:</h2>
+
               <v-chip
                 v-for="src in filteredSrc"
                 :key="src.id"
@@ -41,6 +44,15 @@
               >
                 {{ src }}
               </v-chip>
+              <!-- <span v-show="alreadySelectedSrc">
+                its already selected
+              </span> -->
+              <!-- <v-tooltip right>
+                <template v-slot:activator="{ on }">
+                  <v-btn color="primary" dark v-on="on">Left</v-btn>
+                </template>
+                <span>Left tooltip</span>
+              </v-tooltip> -->
             </div>
             <div v-show="showSelected">
               <h3>Your selected news sources are</h3>
@@ -52,7 +64,7 @@
                 {{ src }}
               </h4>
             </div>
-            <CategoryComp />
+            <CategoryComp v-show="hideCategory" />
           </div>
         </div>
       </v-row>
@@ -73,6 +85,8 @@ export default class SearchComp extends Vue {
   private initShowSrc: boolean = true;
   private showSelected: boolean = false;
   private selectedNewsSrc: Array<string> = [];
+  private alreadySelectedSrc: boolean = false;
+  private hideCategory: boolean = false;
   private newsSrc: Array<string> = [
     "ikon",
     "gogo.mn",
@@ -115,9 +129,13 @@ export default class SearchComp extends Vue {
   }
   private selectedSrc(src: any) {
     this.showSelected = true;
+    this.hideCategory = true;
     // src should be existed only once
     if (!this.selectedNewsSrc.includes(src)) {
+      this.alreadySelectedSrc = false;
       this.selectedNewsSrc.push(src);
+    } else {
+      this.alreadySelectedSrc = true;
     }
     // when its again selecting, arr must be start from []
   }
@@ -141,5 +159,11 @@ export default class SearchComp extends Vue {
 .selectedNewsSrc {
   color: gray;
   margin: 5px auto;
+}
+.containerScroll {
+  max-height: 1000px;
+}
+.v-input {
+  padding: 10px;
 }
 </style>
