@@ -9,14 +9,15 @@ export default new Vuetify({
       search: "mdi-magnify",
       heart: "mdi-heart",
       news: "mdi-newspaper",
-      event: "mdi-calendar"
+      event: "mdi-calendar",
+      bmark:"mdi-bookmark-check"
     }
   },
   theme: {
     themes: {
       light: {
         primary: "#2c3e50",
-        secondary: "#757575",
+        secondary: "#424242",
         accent: "#212121",
         error: "#FF8A65"
       }

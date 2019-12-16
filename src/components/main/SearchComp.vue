@@ -54,7 +54,7 @@
                 <span>Left tooltip</span>
               </v-tooltip> -->
             </div>
-            <div v-show="showSelected">
+            <div v-show="showSelected" class="selectedDiv">
               <h3>Your selected news sources are</h3>
               <h4
                 v-for="src in selectedNewsSrc"
@@ -165,5 +165,8 @@ export default class SearchComp extends Vue {
 }
 .v-input {
   padding: 10px;
+}
+.selectedDiv{
+  margin: 15px auto;
 }
 </style>
