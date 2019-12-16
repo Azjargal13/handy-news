@@ -35,7 +35,7 @@
             <!-- After selecting choices-->
             <div v-show="!initShowSrc">
               <h2>Matching news sources from search input:</h2>
-
+              <!-- <h4 > {{msg}} </h4> -->
               <v-chip
                 v-for="src in filteredSrc"
                 :key="src.id"
@@ -44,6 +44,7 @@
               >
                 {{ src }}
               </v-chip>
+               
               <!-- <span v-show="alreadySelectedSrc">
                 its already selected
               </span> -->
@@ -87,6 +88,8 @@ export default class SearchComp extends Vue {
   private selectedNewsSrc: Array<string> = [];
   private alreadySelectedSrc: boolean = false;
   private hideCategory: boolean = false;
+  private msg:string = "Sorry, could not find :(";
+  private showMsg:boolean = false;
   private newsSrc: Array<string> = [
     "ikon",
     "gogo.mn",
@@ -121,12 +124,15 @@ export default class SearchComp extends Vue {
       //this.showSelected = false;
     } else {
       this.initShowSrc = false;
+      this.showMsg = false
       this.filteredSrc = this.newsSrc.filter(newsSite => {
         return newsSite.toLowerCase().includes(this.searchText.toLowerCase());
       });
       return this.filteredSrc;
-    }
+    } 
+    // some statement need to be exist here!
   }
+  // check selected source should be existed in arr only
   private selectedSrc(src: any) {
     this.showSelected = true;
     this.hideCategory = true;
