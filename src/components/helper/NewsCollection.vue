@@ -3,7 +3,7 @@
     <!-- in cicle logo shows news source -->
     <v-card
       class="mx-5 my-5"
-      max-width="444"
+      max-width="375"
       style="text-align:left"
       v-for="news in newsAll"
       :key="news.id"
@@ -11,7 +11,12 @@
       <v-list-item three-line>
         <v-list-item-avatar size="50" color="grey"></v-list-item-avatar>
         <v-list-item-content>
-          <div class="overline mb-4">News from {{ news.publisher }}</div>
+          <div class="overline font-weight-bold">
+            News from {{ news.publisher }}
+          </div>
+          <div class="overline font-italic font-weight-light mb-4 text-end">
+            on {{ news.publishedOn }}
+          </div>
           <v-list-item-title class="headline mb-1"
             >{{ news.title }}
           </v-list-item-title>

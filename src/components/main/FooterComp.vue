@@ -1,14 +1,10 @@
 <template>
   <div>
-    <v-footer
-      absolute
-      class="font-weight-medium footer pa-0 "
-      color="secondary"
-    >
+    <v-footer absolute class="font-weight-medium footer pa-0 " color="#EEEEEE">
       <v-col class="text-center grey--text" cols="12">
         made with full of <v-icon color="grey">$heart</v-icon> in
         {{ new Date().getFullYear() }} —
-        <strong class="white--text">HandyNews</strong>
+        <strong class="black--text">HandyNews</strong>
       </v-col>
     </v-footer>
   </div>
