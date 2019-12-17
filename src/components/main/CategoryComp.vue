@@ -6,15 +6,15 @@
       label="News category"
       color="black"
       multiple="true"
-      class="categorySel"
+      class="mx-auto"
       hint="You can pick up various type of news :)"
       persistent-hint
-      prepend-icon="$bmark"   
+      prepend-icon="$bmark"
     ></v-select>
     <!-- date picker -->
     <DatePickerComp />
     <!-- news fetching confirmation button -->
-    <v-btn class="secondary newsBtn" to="/news" block>
+    <v-btn class="secondary pa=3 newsBtn" to="/news" block>
       <v-icon>$news</v-icon>
       Show my news
     </v-btn>
@@ -55,9 +55,6 @@ export default class CategoryComp extends Vue {
 
 <style scoped>
 .newsBtn {
-  padding: 15px;
+  margin-bottom: 170px;
 }
-.categorySel {
-  margin: 15px auto;
-}</style
->>
+</style>

@@ -7,7 +7,7 @@
         justify="center"
         class="containerScroll"
       >
-        <div class="search-outer">
+        <div class="search-outer mx-0 my-auto">
           <div class="search-text">
             <!-- due to scrolling search box is moving up & up -->
             <!-- need to keep its position fixed -->
@@ -17,7 +17,7 @@
               id="search"
               height="60"
               outlined
-              class="search"
+              class="pa-0 mt-12"
               append-icon="$search"
               hint="You can select multiple sources :)"
               aria-autocomplete="list"
@@ -44,7 +44,7 @@
               >
                 {{ src }}
               </v-chip>
-               
+
               <!-- <span v-show="alreadySelectedSrc">
                 its already selected
               </span> -->
@@ -55,12 +55,12 @@
                 <span>Left tooltip</span>
               </v-tooltip> -->
             </div>
-            <div v-show="showSelected" class="selectedDiv">
+            <div v-show="showSelected" class="mx-auto">
               <h3>Your selected news sources are</h3>
               <h4
                 v-for="src in selectedNewsSrc"
                 :key="src.id"
-                class="selectedNewsSrc"
+                class="selectedNewsSrc mx-5 my-0.5"
               >
                 {{ src }}
               </h4>
@@ -88,8 +88,8 @@ export default class SearchComp extends Vue {
   private selectedNewsSrc: Array<string> = [];
   private alreadySelectedSrc: boolean = false;
   private hideCategory: boolean = false;
-  private msg:string = "Sorry, could not find :(";
-  private showMsg:boolean = false;
+  private msg: string = "Sorry, could not find :(";
+  private showMsg: boolean = false;
   private newsSrc: Array<string> = [
     "ikon",
     "gogo.mn",
@@ -124,12 +124,12 @@ export default class SearchComp extends Vue {
       //this.showSelected = false;
     } else {
       this.initShowSrc = false;
-      this.showMsg = false
+      this.showMsg = false;
       this.filteredSrc = this.newsSrc.filter(newsSite => {
         return newsSite.toLowerCase().includes(this.searchText.toLowerCase());
       });
       return this.filteredSrc;
-    } 
+    }
     // some statement need to be exist here!
   }
   // check selected source should be existed in arr only
@@ -157,22 +157,17 @@ export default class SearchComp extends Vue {
   position: relative;
   color: dimgrey;
   width: 450px;
-  margin: 0 auto;
 }
 .selectedSrc {
   margin: 5px 10px 5px auto;
 }
 .selectedNewsSrc {
   color: gray;
-  margin: 5px auto;
 }
 .containerScroll {
   max-height: 1000px;
 }
 .v-input {
   padding: 10px;
-}
-.selectedDiv{
-  margin: 15px auto;
 }
 </style>

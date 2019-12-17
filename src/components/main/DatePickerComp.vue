@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-col class="datePicker">
+    <v-col class="mb-6 pa-0" cols="12" lg="6">
       <v-menu
         v-model="dateSelect"
         :close-on-content-click="false"
@@ -8,8 +8,14 @@
         transition="scale-transition"
       >
         <template v-slot:activator="{ on }">
-          <v-text-field v-model="date" prepend-icon="$event" readonly v-on="on"
-          hint="You can select the date news published :)" persistent-hint>
+          <v-text-field
+            v-model="date"
+            prepend-icon="$event"
+            readonly
+            v-on="on"
+            hint="You can select the date news published :)"
+            persistent-hint
+          >
           </v-text-field>
         </template>
         <v-date-picker
@@ -37,7 +43,6 @@ export default class DatePickerComp extends Vue {
 </script>
 
 <style scoped>
-.datePicker{
-  margin-bottom: 15px;
+.datePicker {
 }
 </style>

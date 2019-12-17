@@ -3,7 +3,7 @@
     <v-app>
       <ToolbarComp />
       <router-view></router-view>
-      <!-- <FooterComp /> -->
+      <FooterComp />
     </v-app>
   </div>
 </template>
