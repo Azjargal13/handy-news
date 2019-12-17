@@ -25,7 +25,9 @@
       </v-list-item>
       <v-card-actions>
         <!-- based on the category, color will be changed -->
-        <p class="ml-5 mb-0 text-uppercase font-weight-bold categoryColor">
+        <p
+          class="ml-5 mb-0 text-uppercase font-weight-bold warning white--text"
+        >
           |{{ news.category }}|
         </p>
         <v-spacer></v-spacer>
