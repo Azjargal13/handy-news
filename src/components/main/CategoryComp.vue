@@ -6,7 +6,7 @@
       label="News category"
       color="black"
       multiple="true"
-      class="mx-auto"
+      class="mx-auto text-right"
       hint="You can pick up various type of news :)"
       persistent-hint
       prepend-icon="$bmark"
@@ -14,7 +14,7 @@
     <!-- date picker -->
     <DatePickerComp />
     <!-- news fetching confirmation button -->
-    <v-btn class="secondary pa=3 newsBtn" to="/news" block>
+    <v-btn class="accent pa=3 newsBtn" to="/news" block>
       <v-icon>$news</v-icon>
       Show my news
     </v-btn>

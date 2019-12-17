@@ -10,7 +10,9 @@ export default new Vuetify({
       heart: "mdi-heart",
       news: "mdi-newspaper",
       event: "mdi-calendar",
-      bmark: "mdi-bookmark-check"
+      bmark: "mdi-bookmark-check",
+      close: "mdi-close-box",
+      more: "mdi-page-next"
     }
   },
   theme: {

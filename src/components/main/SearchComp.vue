@@ -55,12 +55,12 @@
                 <span>Left tooltip</span>
               </v-tooltip> -->
             </div>
-            <div v-show="showSelected" class="mx-auto">
+            <div v-show="showSelected" class="mx-auto mb-4">
               <h3>Your selected news sources are</h3>
               <h4
                 v-for="src in selectedNewsSrc"
                 :key="src.id"
-                class="selectedNewsSrc mx-5 my-0.5"
+                class="selectedNewsSrc mx-8 my-0.5 font-weight-bold"
               >
                 {{ src }}
               </h4>
@@ -162,7 +162,7 @@ export default class SearchComp extends Vue {
   margin: 5px 10px 5px auto;
 }
 .selectedNewsSrc {
-  color: gray;
+  color: #212121;
 }
 .containerScroll {
   max-height: 1000px;
