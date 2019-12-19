@@ -39,16 +39,11 @@ export default class CategoryComp extends Vue {
   // maybe can add icons for each
   private items: Array<string> = [
     "business",
-    "market",
-    "world",
-    "politics",
-    "technology",
-    "breaking views",
-    "sport",
-    "life",
-    "entertainment",
+    "general",
     "health",
-    "science"
+    "science",
+    "technology",
+    "sports"
   ];
 }
 </script>
