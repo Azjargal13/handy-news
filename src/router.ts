@@ -14,7 +14,9 @@ const router = new Router({
     { path: "/", component: AppTheme },
     {
       path: "/news",
-      component: NewsCollection
+      name: "News",
+      component: NewsCollection,
+      props: true
     }
   ] as RouteConfig[]
 } as RouterOptions);

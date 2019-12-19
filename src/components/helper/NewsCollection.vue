@@ -18,10 +18,9 @@
           <v-list-item-title class="headline mb-1"
             >{{ news.name }}
           </v-list-item-title>
-
           <v-list-item-subtitle>
             <p>
-              {{ news.description }}
+              {{ news.content }}
             </p>
           </v-list-item-subtitle>
         </v-list-item-content>
@@ -41,6 +40,7 @@
         <v-btn text>Read more</v-btn>
       </v-card-actions>
     </v-card>
+    {{ passRes }}
   </div>
 </template>
 
@@ -48,15 +48,31 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import NewsList from "../lib/NewsList";
-
+import { Watch, Prop } from "vue-property-decorator";
+import { newsBundle } from "../../types";
 @Component({})
 export default class NewsCollection extends Vue {
-  private hideNewsCard: boolean = false;
-  private listService = new NewsList();
+  private passRes: Array<string> = ["1"];
+  private newsAll: Array<newsBundle> = [
+    {
+      title: "its tiiitle",
+      content: "its conteeeeeeent",
+      publisher: "its meeeee",
+      publishedOn: "todaaaay",
+      category: "business"
+    }
+  ];
+  @Prop({ default: [] })
+  categoryValue!: Array<string>;
 
+  @Watch("categoryValue")
+  getCategoryValue() {
+    const listService = new NewsList();
+    //let res = await this.listService.getNewsByCategory();
+    this.passRes.push(this.categoryValue[0]);
+  }
   mounted() {
-    let newsAll: any = this.listService.getNewsByCategory();
-
+    //let newsAll: any = this.listService.getNewsByCategory();
     // this.newsAll.push(a.sources);
   }
 }
