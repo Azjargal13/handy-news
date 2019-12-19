@@ -2,7 +2,7 @@
 node_modules
 /dist
 src/components/lib/NewsAPIK.ts
-
+.gitsecret
 # local env files
 .env.local
 .env.*.local
