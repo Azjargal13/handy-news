@@ -1,7 +1,19 @@
 export interface newsBundle {
   title: string;
   content: string;
-  publisher: string;
-  publishedOn: string;
-  category: string;
+  publishedAt: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+}
+
+export interface newsItem {
+  name: string;
+  id: string;
+}
+
+export interface selectValues {
+  category: Array<string>;
+  newsSrc: Array<newsItem>;
+  date: string;
 }

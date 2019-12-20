@@ -26,10 +26,12 @@
             >
             </v-text-field>
             <!-- Initial choices-->
-            <div v-show="initShowSrc">
+            <div v-show="initShowSrc" class="mb-10">
               <h2>News sources you can select from</h2>
+              <!-- shuffle and show only 15 sources -->
+              <!-- or can have their imgs -->
               <v-chip v-for="src in newsSrc" :key="src.id" class="selectedSrc">
-                {{ src }}
+                {{ src.name }}
               </v-chip>
             </div>
             <!-- After selecting choices-->
@@ -42,7 +44,7 @@
                 class="selectedSrc"
                 @click="selectedSrc(src)"
               >
-                {{ src }}
+                {{ src.name }}
               </v-chip>
 
               <!-- <span v-show="alreadySelectedSrc">
@@ -62,10 +64,13 @@
                 :key="src.id"
                 class="selectedNewsSrc mx-8 my-0.5 font-weight-bold"
               >
-                {{ src }}
+                {{ src.name }}
               </h4>
             </div>
-            <CategoryComp v-show="hideCategory" />
+            <CategoryComp
+              v-show="hideCategory"
+              :selectedSrc="selectedNewsSrc"
+            />
           </div>
         </div>
       </v-row>
@@ -76,35 +81,55 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import CategoryComp from "./CategoryComp.vue";
+import { newsItem } from "../../types";
 
 @Component({
   components: { CategoryComp }
 })
 export default class SearchComp extends Vue {
   private searchText: string = "";
-  private filteredSrc: Array<string> = [];
+  private filteredSrc: Array<newsItem> = [];
   private initShowSrc: boolean = true;
   private showSelected: boolean = false;
-  private selectedNewsSrc: Array<string> = [];
+  private selectedNewsSrc: Array<newsItem> = [];
   private alreadySelectedSrc: boolean = false;
   private hideCategory: boolean = false;
   private msg: string = "Sorry, could not find :(";
   private showMsg: boolean = false;
-  private newsSrc: Array<string> = [
-    "ikon",
-    "gogo.mn",
-    "business.mn",
-    "Quarts.com",
-    "BBC",
-    "unread.today",
-    "techCrunch",
-    "reuters",
-    "NHK",
-    "JapanPost",
-    "Times",
-    "AsahiShinbun",
-    "FoxNews",
-    "The Guardian"
+  private newsSrc: Array<newsItem> = [
+    { name: "BBC", id: "bbc-news" },
+    { name: "CNN", id: "cnn" },
+    { name: "TechCrunch", id: "techcrunch" },
+    { name: "TechRadar", id: "tech-radar" },
+    { name: "Reuters", id: "reuters" },
+    { name: "FoxNews", id: "fox-news" },
+    { name: "Bloomberg", id: "bloomberg" },
+    { name: "Business Insider", id: "business-insider" },
+    { name: "Financial Post", id: "financial-post" },
+    { name: "CNBC", id: "cnbc" },
+    { name: "Fortune", id: "fortune" },
+    { name: "The Wall Street Journal", id: "the-wall-street-journal" },
+    { name: "New Scientist", id: "new-scientist" },
+    { name: "Next Big Future", id: "next-big-future" },
+    { name: "Hacker News", id: "hacker-news" },
+    { name: "Crypto Coins News", id: "crypto-coins-news" },
+    { name: "The Verge", id: "the-verge" },
+    { name: "Medical News Today", id: "medical-news-today" },
+    { name: "Wired", id: "wired" },
+    { name: "Associated Press", id: "associated-press" },
+    { name: "The Washington Post", id: "the-washington-pos" },
+    { name: "The Huffington Post", id: "the-huffington-post" },
+    { name: "The New York Times", id: "the-new-york-times" },
+    { name: "National Geographic", id: "national-geographic" }
+
+    // "ikon",
+    // "gogo.mn",
+    // "business.mn",
+    // "Quarts.com",
+    // "unread.today",
+    // "NHK",
+    // "JapanPost",
+    // "AsahiShinbun",
   ];
   constructor() {
     super();
@@ -126,7 +151,9 @@ export default class SearchComp extends Vue {
       this.initShowSrc = false;
       this.showMsg = false;
       this.filteredSrc = this.newsSrc.filter(newsSite => {
-        return newsSite.toLowerCase().includes(this.searchText.toLowerCase());
+        return newsSite.name
+          .toLowerCase()
+          .includes(this.searchText.toLowerCase());
       });
       return this.filteredSrc;
     }

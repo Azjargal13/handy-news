@@ -15,10 +15,11 @@
     <!-- date picker -->
     <DatePickerComp />
     <!-- news fetching confirmation button -->
+    {{ categoryValue }}
     <v-btn
       class="accent pa=3 newsBtn"
       block
-      :to="{ name: 'News', params: { categoryValue } }"
+      :to="{ name: 'News', params: { selectedValues } }"
     >
       <v-icon>$news</v-icon>
       Show my news
@@ -31,9 +32,12 @@
 
 <script lang="ts">
 import Vue from "vue";
+
 import Component from "vue-class-component";
 import DatePickerComp from "./DatePickerComp.vue";
 import NewsList from "../lib/NewsList";
+import { Prop } from "vue-property-decorator";
+import { newsItem, selectValues } from "../../types";
 
 @Component({
   components: {
@@ -41,9 +45,19 @@ import NewsList from "../lib/NewsList";
   }
 })
 export default class CategoryComp extends Vue {
+  @Prop({ default: [] })
+  selectedSrc!: Array<newsItem>;
+
   // news caterogy includes
   // - business, market, world, politics, technology, breakingviews, sport, life
   private categoryValue: Array<string> = [];
+  private selectedValues: Array<selectValues> = [
+    {
+      category: this.categoryValue,
+      newsSrc: this.selectedSrc,
+      date: "2019-12-20"
+    }
+  ];
   private newslist: any = new NewsList();
   private passRes: any = [];
   // maybe can add icons for each
@@ -55,11 +69,12 @@ export default class CategoryComp extends Vue {
     "technology",
     "sports"
   ];
-  private msg: string = "testing msg";
-  private async getNewsInfo() {
-    var res = await this.newslist.getNewsByCategory();
-    this.passRes = res.sources;
-  }
+
+  // private msg: string = "testing msg";
+  // private async getNewsInfo() {
+  //   var res = await this.newslist.getNewsByCategory(this.selectedSrc[0].id);
+  //   this.passRes = res.sources;
+  // }
 }
 </script>
 

@@ -9,22 +9,31 @@
       :key="news.id"
     >
       <v-list-item three-line>
-        <v-list-item-avatar size="50" color="grey"></v-list-item-avatar>
+        <v-list-item-avatar size="40" color="grey"></v-list-item-avatar>
         <v-list-item-content>
-          <div class="overline font-weight-bold">News from {{ news.id }}</div>
-          <div class="overline font-italic font-weight-light mb-4 text-end">
-            on {{ news.publishedOn }}
+          <div class="overline font-weight-bold">
+            from {{ news.source.name }}
           </div>
-          <v-list-item-title class="headline mb-1"
-            >{{ news.name }}
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            <p>
-              {{ news.content }}
-            </p>
-          </v-list-item-subtitle>
+          <div class="overline font-italic font-weight-light text-end">
+            {{ news.publishedAt }}
+          </div>
         </v-list-item-content>
       </v-list-item>
+      <div>
+        <div class="title mb-3 ml-5">
+          {{ news.title }}
+        </div>
+        <!-- <div>
+          <img src="">
+            {{ news.description }}
+          </img>
+        </div> -->
+        <div>
+          <p class="subtitle mx-6">
+            {{ news.description }}
+          </p>
+        </div>
+      </div>
       <v-card-actions>
         <!-- based on the category, color will be changed -->
         <p
@@ -40,7 +49,7 @@
         <v-btn text>Read more</v-btn>
       </v-card-actions>
     </v-card>
-    {{ passRes }}
+    <!-- {{ newsSources }} -->
   </div>
 </template>
 
@@ -49,31 +58,27 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import NewsList from "../lib/NewsList";
 import { Watch, Prop } from "vue-property-decorator";
-import { newsBundle } from "../../types";
+import { newsBundle, selectValues } from "../../types";
 @Component({})
 export default class NewsCollection extends Vue {
-  private passRes: Array<string> = ["1"];
-  private newsAll: Array<newsBundle> = [
-    {
-      title: "its tiiitle",
-      content: "its conteeeeeeent",
-      publisher: "its meeeee",
-      publishedOn: "todaaaay",
-      category: "business"
-    }
-  ];
+  private newsAll: Array<newsBundle> = [];
+  private newsSources: Array<string> = [];
+
   @Prop({ default: [] })
   categoryValue!: Array<string>;
 
-  @Watch("categoryValue")
-  getCategoryValue() {
+  @Prop({ default: [] })
+  selectedValues!: Array<selectValues>;
+
+  async mounted() {
+    // shows news by category
     const listService = new NewsList();
-    //let res = await this.listService.getNewsByCategory();
-    this.passRes.push(this.categoryValue[0]);
-  }
-  mounted() {
-    //let newsAll: any = this.listService.getNewsByCategory();
-    // this.newsAll.push(a.sources);
+    let newsAll: any = await listService.getEverything(this.selectedValues);
+    //let newsSources: any = await listService.getNewsBySources();
+    this.newsAll = newsAll.articles;
+    //this.newsSources = newsSources.sources;
+
+    // want to show only selected source based on its category!
   }
 }
 </script>
@@ -81,5 +86,11 @@ export default class NewsCollection extends Vue {
 <style scoped>
 .categoryColor {
   color: red;
+}
+.title {
+  line-height: 25px;
+}
+.subtitle {
+  text-align: justify;
 }
 </style>
