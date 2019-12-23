@@ -120,7 +120,8 @@ export default class SearchComp extends Vue {
     { name: "The Washington Post", id: "the-washington-pos" },
     { name: "The Huffington Post", id: "the-huffington-post" },
     { name: "The New York Times", id: "the-new-york-times" },
-    { name: "National Geographic", id: "national-geographic" }
+    { name: "National Geographic", id: "national-geographic" },
+    { name: "Space.com", id: "space.com" }
 
     // "ikon",
     // "gogo.mn",

@@ -18,10 +18,7 @@
           >
           </v-text-field>
         </template>
-        <v-date-picker
-          v-model="date"
-          @input="dateSelect = false"
-        ></v-date-picker>
+        <v-date-picker v-model="date" @input="passDate"></v-date-picker>
       </v-menu>
     </v-col>
   </div>
@@ -38,11 +35,13 @@ export default class DatePickerComp extends Vue {
   }
   private date: string = new Date().toISOString().substr(0, 10);
   private dateSelect: boolean = false;
+
+  private passDate() {
+    this.$emit("passDate", this.date);
+    this.dateSelect = false;
+  }
   mounted() {}
 }
 </script>
 
-<style scoped>
-.datePicker {
-}
-</style>
+<style scoped></style>

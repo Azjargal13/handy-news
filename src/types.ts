@@ -1,4 +1,5 @@
 export interface newsBundle {
+  source: { name: string };
   title: string;
   content: string;
   publishedAt: string;

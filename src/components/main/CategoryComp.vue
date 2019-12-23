@@ -13,9 +13,10 @@
       v-model="categoryValue"
     ></v-select>
     <!-- date picker -->
-    <DatePickerComp />
+    <DatePickerComp @passDate="getDate" />
     <!-- news fetching confirmation button -->
     {{ categoryValue }}
+    {{ selectedDate }}
     <v-btn
       class="accent pa=3 newsBtn"
       block
@@ -50,13 +51,10 @@ export default class CategoryComp extends Vue {
 
   // news caterogy includes
   // - business, market, world, politics, technology, breakingviews, sport, life
+  private selectedDate: string = "";
   private categoryValue: Array<string> = [];
   private selectedValues: Array<selectValues> = [
-    {
-      category: this.categoryValue,
-      newsSrc: this.selectedSrc,
-      date: "2019-12-20"
-    }
+    { category: [], newsSrc: [], date: "" }
   ];
   private newslist: any = new NewsList();
   private passRes: any = [];
@@ -70,11 +68,18 @@ export default class CategoryComp extends Vue {
     "sports"
   ];
 
-  // private msg: string = "testing msg";
-  // private async getNewsInfo() {
-  //   var res = await this.newslist.getNewsByCategory(this.selectedSrc[0].id);
-  //   this.passRes = res.sources;
+  // mounted() {
+  //   this.selectedValues = [
+  //     {
+  //       category: this.categoryValue,
+  //       newsSrc: this.selectedSrc,
+  //       date: this.selectedDate
+  //     }
+  //   ];
   // }
+  getDate(value: string) {
+    this.selectedDate = value;
+  }
 }
 </script>
 
